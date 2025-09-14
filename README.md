@@ -47,27 +47,22 @@ CloudVault/
    ```bash
    git clone https://github.com/yourusername/cloudvault.git
    cd cloudvault
-Set up the environment on your EC2 instance:
+2.Set up the environment on your EC2 instance:
+      bash
+      Copy code
+      sudo yum update -y
+      sudo yum install python3-pip -y
+      pip3 install Flask boto3
+3.Configure your AWS credentials (either via environment variables or IAM role).
 
-bash
-Copy code
-sudo yum update -y
-sudo yum install python3-pip -y
-pip3 install Flask boto3
-Configure your AWS credentials (either via environment variables or IAM role).
-
-Update S3_BUCKET_NAME and region in app.py:
-
-python
-Copy code
-S3_BUCKET_NAME = 'your-s3-bucket-name'
-s3 = boto3.client('s3', region_name='your-region')
-Run the application:
-
-bash
-Copy code
-python3 app.py
-Visit http://<your-ec2-public-ip>:5000/ in your browser to upload files.
+4.Update S3_BUCKET_NAME and region in app.py:
+   S3_BUCKET_NAME = 'your-s3-bucket-name'
+   s3 = boto3.client('s3', region_name='your-region')
+   
+5.Run the application:
+   python3 app.py
+   
+6.Visit http://<your-ec2-public-ip>:5000/ in your browser to upload files.
 
 
 🔑 Security Notes
